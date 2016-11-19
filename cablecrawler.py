@@ -17,7 +17,6 @@ import re
 from functools import partial
 import csv
 import time
-import random
 import requests
 import lxml
 import lxml.html
@@ -72,11 +71,14 @@ def _get_page(sess, url):
     page = None
     while True:
         res = sess.get(url)
+        if res.status_code == 500:
+            time.sleep(5)
+            res = sess.get(url)
         res.raise_for_status()
         page = res.content
         if not _META_REFRESH_PATTERN.search(page):
             break
-        time.sleep(random.choice([.2, .5, .7, 1]))
+        time.sleep(1)
     return page
 
 
