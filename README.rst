@@ -1,5 +1,6 @@
-Dumps the content of the `NARA AAD <https://aad.archives.gov/aad/>`_ electronic
-telegram / cables overview table into CSV files.
+Dumps the content of the `NARA AAD <https://aad.archives.gov/aad/>`_ `electronic
+telegram / cables <https://aad.archives.gov/aad/series-description.jsp?s=4073&cat=TS17&bc=,sl>`_ 
+overview table into CSV files.
 
 No need to run the script, see ``output`` directory for CSV files by year.
 

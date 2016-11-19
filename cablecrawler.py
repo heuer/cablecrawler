@@ -3,7 +3,7 @@
 # Copyright (c) 2016 -- Lars Heuer - Semagia <http://www.semagia.com/>.
 # All rights reserved.
 #
-# License: BSD License
+# License: Public Domain
 #
 """\
 Dumps the content of the `NARA AAD <https://aad.archives.gov/aad/>`_ electronic
