@@ -18,7 +18,6 @@ from functools import partial
 import csv
 import time
 import requests
-import lxml
 import lxml.html
 try:
     # Py3
@@ -92,13 +91,13 @@ def make_csv(year, out, csv_header=True, useragent=None):
     :param str useragent: The user agent string to use (``None`` indicates a
             default user agent string)
     """
-    def _remove_multiple_ws(s):
+    def remove_multiple_ws(s):
         """\
         Folds two or more space characters into one.
         """
         return _MULTIPLE_WS_PATTERN.sub(' ', s)
 
-    def _next_page_url(html, base_url):
+    def next_page_url(html, base_url):
         """\
         Returns the link to the next page.
         """
@@ -107,7 +106,7 @@ def make_csv(year, out, csv_header=True, useragent=None):
             return None
         return urljoin(base_url, m.group(1))
 
-    def _html_table_row_iter(page):
+    def html_table_row_iter(page):
         """\
         Returns an iterator over the query result rows.
         """
@@ -128,15 +127,14 @@ def make_csv(year, out, csv_header=True, useragent=None):
     writerow = writer.writerow
     html = get_html(url)
     while html:
-        for doc_url, date, doc_no, film_no, sender, subject, tags, recipient in _html_table_row_iter(html):
-            subject = _remove_multiple_ws(subject)
+        for doc_url, date, doc_no, film_no, sender, subject, tags, recipient in html_table_row_iter(html):
+            subject = remove_multiple_ws(subject)
             doc_url = urljoin(url, doc_url)
             sender = sender or ''
             tags = tags or ''
             recipient = recipient or ''
             row = [doc_url, date, doc_no, film_no, sender, subject, tags, recipient]
             writerow(row)
-        url = _next_page_url(html, url)
+        url = next_page_url(html, url)
         html = get_html(url) if url is not None else None
-    f.flush()
     f.close()
