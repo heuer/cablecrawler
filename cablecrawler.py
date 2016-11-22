@@ -12,9 +12,10 @@ telegram / cables overview table into CSV files.
 The CSV files provide a download link for each cable, the cable identifier and
 other meta data like sender, recpient and cable date.
 """
-from __future__ import absolute_import, unicode_literals
+from __future__ import absolute_import, unicode_literals, print_function
 import re
 import os
+import glob
 from functools import partial
 import csv
 import time
@@ -146,3 +147,25 @@ def download_published_cables_overview_csv(directory, year, startpage=1, rpp=10,
         f.close()
         url = next_page_url(html, url)
         html = get_html(url) if url is not None else None
+
+
+def merge_csv_files(directory, out):
+    """\
+    Merges the CSV files in the provided `directory` into one CSV file.
+
+    :param str directory: Path where to find the CSV files
+    :param str out: Resulting file name.
+    """
+    f = open(out, 'w', encoding='utf-8')
+    writer = csv.writer(f)
+    writerow = writer.writerow
+    writerow(['URL', 'Draft Date', 'Document Number', 'Film Number', 'From', 'Subject', 'TAGS', 'To'])
+    cnt = 0
+    for fn in sorted(glob.glob(directory + '*.csv'), key=lambda fn: int(os.path.basename(fn).split('.')[0])):
+        with open(fn, 'r', encoding='utf-8') as inputfile:
+            reader = csv.reader(inputfile)
+            for row in reader:
+                cnt += 1
+                writerow(row)
+    f.close()
+    print('Number of rows: {0}'.format(cnt))
