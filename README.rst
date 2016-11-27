@@ -1,11 +1,11 @@
 Dumps the content of the `NARA AAD <https://aad.archives.gov/aad/>`_ `electronic
 telegram / cables <https://aad.archives.gov/aad/series-description.jsp?s=4073&cat=TS17&bc=,sl>`_ 
-overview table into CSV files.
+overview table into CSV files and provides functions to download the cables.
 
 Works with Py2 and Py3. Python 2.7 requires the 
 `backports.csv <https://github.com/ryanhiebert/backports.csv>`_ package.
 
-No need to run the script, the results are at Archive.org
+No need to run the scripts, the results are at Archive.org
 
 
 U.S. Diplomatic Cables / Electronic Telegrams
