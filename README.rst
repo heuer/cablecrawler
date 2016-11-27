@@ -13,7 +13,7 @@ U.S. Diplomatic Cables / Electronic Telegrams
 * `Diplomatic Cables 1973 -- Overview <https://archive.org/details/us-diplomatic-cables-1973-overview>`_
 * `Diplomatic Cables 1973 -- Cables as PDF and plain text <https://archive.org/details/U.s.DiplomaticCablesYear1973>`_
 * `Diplomatic Cables 1974 -- Overview <https://archive.org/details/us-diplomatic-cables-1974-overview>`_
-* `Diplomatic Cables 1974 -- Cables as PDF and plain text <https://archive.org/details/U.s.DiplomaticCablesYear1975>`_
+* `Diplomatic Cables 1974 -- Cables as PDF and plain text <https://archive.org/details/U.s.DiplomaticCablesYear1974>`_
 * `Diplomatic Cables 1975 -- Overview <https://archive.org/details/us-diplomatic-cables-1975-overview>`_
 * `Diplomatic Cables 1975 -- Cables as PDF and plain text <https://archive.org/details/U.s.DiplomaticCablesYear1975>`_
 * `Diplomatic Cables 1976 -- Overview <https://archive.org/details/us-diplomatic-cables-1976-overview>`_
