@@ -211,6 +211,10 @@ def download_cables(overview_csv, directory, offset=0, useragent=None):
         doc_no = row[2]
         local_path = month(date)
         res = sess.get(doc_url)
+        if res.status_code in (500, 503):
+            time.sleep(20)
+            sess = _make_session(useragent=useragent)
+            res = sess.get(doc_url)
         res.raise_for_status()
         aad_filename = _AAD_FILENAME_PATTERN.search(res.headers['Content-disposition']).group(1)
         local_filename = os.path.join(local_path, '{0}.pdf'.format(doc_no))
